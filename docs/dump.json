@@ -1,0 +1,1582 @@
+[
+  {
+    "__docId__": 0,
+    "kind": "file",
+    "name": "src/ds/tree/createTree.js",
+    "content": "/**\n * creates a new tree root plain data object suitable for use in state\n *\n * @version 1.0.0\n * @param {{id:string}} config - destructured initialization object\n * @param {string} [config.id='tree'] - id to give the tree, should be unique\n * @return {{id:string, children:Array}} - tree root plain data object\n * @property {string} id - node identifier\n * @property {?*} data - node data\n * @property {Array<{id:string, children:Array}>} children - list of child tree node plain data objects\n *\n * @example <caption>How to use</caption>\n *\n * const tree = createTree({ id: 'my-tree' })\n */\nconst createTree = ({ id = 'tree' } = {}) => {\n  return {\n    id,\n    data: { name: 'Default Tree Root' },\n    children: []\n  }\n}\n\nmodule.exports = createTree\n",
+    "static": true,
+    "longname": "src/ds/tree/createTree.js",
+    "access": null,
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 1,
+    "kind": "function",
+    "name": "createTree",
+    "memberof": "src/ds/tree/createTree.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/ds/tree/createTree.js~createTree",
+    "access": null,
+    "export": false,
+    "importPath": "rigtools/src/ds/tree/createTree.js",
+    "importStyle": null,
+    "description": "creates a new tree root plain data object suitable for use in state",
+    "examples": [
+      "<caption>How to use</caption>\n\nconst tree = createTree({ id: 'my-tree' })"
+    ],
+    "lineNumber": 16,
+    "version": "1.0.0",
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "{id:string}"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "config",
+        "description": "destructured initialization object"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "string"
+        ],
+        "spread": false,
+        "optional": true,
+        "defaultValue": "'tree'",
+        "defaultRaw": "'tree'",
+        "name": "config.id",
+        "description": "id to give the tree, should be unique"
+      }
+    ],
+    "properties": [
+      {
+        "nullable": null,
+        "types": [
+          "string"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "id",
+        "description": "node identifier"
+      },
+      {
+        "nullable": true,
+        "types": [
+          "*"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "data",
+        "description": "node data"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "Array<{id:string, children:Array}>"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "children",
+        "description": "list of child tree node plain data objects"
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "{id:string, children:Array}"
+      ],
+      "spread": false,
+      "description": "tree root plain data object"
+    }
+  },
+  {
+    "__docId__": 2,
+    "kind": "file",
+    "name": "src/ds/tree/createTreeNode.js",
+    "content": "/**\n * creates a new tree node plain data object suitable for use in state\n *\n * @version 1.0.0\n * @param {{id:string, data:*}} config - destructured initialization object\n * @param {string} [config.id='tree'] - id to give the tree, should be unique\n * @param {*} [config.data=undefined] - any data to associate with the tree node\n * @return {{id:string, children:Array}} - tree node plain data object\n * @property {string} id - node identifier\n * @property {?*} data - node data\n * @property {Array<{id:string, children:Array}>} children - list of child tree node plain data objects\n *\n * @example <caption>How to use</caption>\n *\n * const node = createTreeNode({ id: 'my-tree-node', data: { name: 'My Tree Node' } })\n */\nconst createTreeNode = ({ id = 'tree', data } = {}) => {\n  return {\n    id,\n    data,\n    children: []\n  }\n}\n\nmodule.exports = createTreeNode\n",
+    "static": true,
+    "longname": "src/ds/tree/createTreeNode.js",
+    "access": null,
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 3,
+    "kind": "function",
+    "name": "createTreeNode",
+    "memberof": "src/ds/tree/createTreeNode.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/ds/tree/createTreeNode.js~createTreeNode",
+    "access": null,
+    "export": false,
+    "importPath": "rigtools/src/ds/tree/createTreeNode.js",
+    "importStyle": null,
+    "description": "creates a new tree node plain data object suitable for use in state",
+    "examples": [
+      "<caption>How to use</caption>\n\nconst node = createTreeNode({ id: 'my-tree-node', data: { name: 'My Tree Node' } })"
+    ],
+    "lineNumber": 17,
+    "version": "1.0.0",
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "{id:string, data:*}"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "config",
+        "description": "destructured initialization object"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "string"
+        ],
+        "spread": false,
+        "optional": true,
+        "defaultValue": "'tree'",
+        "defaultRaw": "'tree'",
+        "name": "config.id",
+        "description": "id to give the tree, should be unique"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "*"
+        ],
+        "spread": false,
+        "optional": true,
+        "defaultValue": "undefined",
+        "defaultRaw": "undefined",
+        "name": "config.data",
+        "description": "any data to associate with the tree node"
+      }
+    ],
+    "properties": [
+      {
+        "nullable": null,
+        "types": [
+          "string"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "id",
+        "description": "node identifier"
+      },
+      {
+        "nullable": true,
+        "types": [
+          "*"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "data",
+        "description": "node data"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "Array<{id:string, children:Array}>"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "children",
+        "description": "list of child tree node plain data objects"
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "{id:string, children:Array}"
+      ],
+      "spread": false,
+      "description": "tree node plain data object"
+    }
+  },
+  {
+    "__docId__": 4,
+    "kind": "file",
+    "name": "src/ds/tree/deleteTreeNode.js",
+    "content": "/**\n * deletes a tree node specified by id from a tree\n * **all children of the deleted node will be deleted as well**\n *\n * @version 1.0.0\n * @param {{tree:object, id:string}}} config - destructured initialization object\n * @param {{id:string, children:Array}} config.tree - the tree root to search for the node to be deleted\n * @param {string} config.id - id of the node to delete\n *\n * @example <caption>How to use</caption>\n *\n * deleteTreeNode({ tree, id: 'target-tree-node' })\n */\nconst deleteTreeNode = ({ tree, id } = {}) => {\n  if (tree.id === id) {\n    tree.children.length = []\n  } else {\n    const queue = [tree]\n\n    while (queue.length) {\n      const node = queue.shift()\n\n      for (let i = 0; i < node.children.length; i += 1) {\n        if (node.children[i].id === id) {\n          node.children.splice(i, 1)\n        } else {\n          queue.push(node.children[i])\n        }\n      }\n    }\n  }\n}\n\nmodule.exports = deleteTreeNode\n",
+    "static": true,
+    "longname": "src/ds/tree/deleteTreeNode.js",
+    "access": null,
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 5,
+    "kind": "function",
+    "name": "deleteTreeNode",
+    "memberof": "src/ds/tree/deleteTreeNode.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/ds/tree/deleteTreeNode.js~deleteTreeNode",
+    "access": null,
+    "export": false,
+    "importPath": "rigtools/src/ds/tree/deleteTreeNode.js",
+    "importStyle": null,
+    "description": "deletes a tree node specified by id from a tree\n**all children of the deleted node will be deleted as well**",
+    "examples": [
+      "<caption>How to use</caption>\n\ndeleteTreeNode({ tree, id: 'target-tree-node' })"
+    ],
+    "lineNumber": 14,
+    "version": "1.0.0",
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "{tree:object, id:string}}"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "config",
+        "description": "destructured initialization object"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "{id:string, children:Array}"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "config.tree",
+        "description": "the tree root to search for the node to be deleted"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "string"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "config.id",
+        "description": "id of the node to delete"
+      }
+    ]
+  },
+  {
+    "__docId__": 6,
+    "kind": "file",
+    "name": "src/ds/tree/findTreeNode.js",
+    "content": "/**\n * searches a tree for a tree node specified by id\n *\n * @version 1.0.0\n * @param {{tree:object, id:string}} config - destructured initialization object\n * @param {{id:string, children:Array}} config.tree - the tree root to search\n * @param {string} config.id - id of the node to find\n * @return {?{id:string, children:Array}} found node or null if not found\n *\n * @example <caption>How to use</caption>\n *\n * const node = findTreeNode({ tree, id: 'target-tree-node' })\n */\nconst findTreeNode = ({ tree, id } = {}) => {\n  const queue = [tree]\n\n  while (queue.length) {\n    const node = queue.shift()\n\n    if (node.id === id) {\n      return node\n    } else {\n      for (let i = 0; i < node.children.length; i += 1) {\n        queue.push(node.children[i])\n      }\n    }\n  }\n\n  return null\n}\n\nmodule.exports = findTreeNode\n",
+    "static": true,
+    "longname": "src/ds/tree/findTreeNode.js",
+    "access": null,
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 7,
+    "kind": "function",
+    "name": "findTreeNode",
+    "memberof": "src/ds/tree/findTreeNode.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/ds/tree/findTreeNode.js~findTreeNode",
+    "access": null,
+    "export": false,
+    "importPath": "rigtools/src/ds/tree/findTreeNode.js",
+    "importStyle": null,
+    "description": "searches a tree for a tree node specified by id",
+    "examples": [
+      "<caption>How to use</caption>\n\nconst node = findTreeNode({ tree, id: 'target-tree-node' })"
+    ],
+    "lineNumber": 14,
+    "version": "1.0.0",
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "{tree:object, id:string}"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "config",
+        "description": "destructured initialization object"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "{id:string, children:Array}"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "config.tree",
+        "description": "the tree root to search"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "string"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "config.id",
+        "description": "id of the node to find"
+      }
+    ],
+    "return": {
+      "nullable": true,
+      "types": [
+        "{id:string, children:Array}"
+      ],
+      "spread": false,
+      "description": "found node or null if not found"
+    }
+  },
+  {
+    "__docId__": 8,
+    "kind": "file",
+    "name": "src/ds/tree/index.js",
+    "content": "const createTree = require('./createTree')\nconst createTreeNode = require('./createTreeNode')\nconst deleteTreeNode = require('./deleteTreeNode')\nconst findTreeNode = require('./findTreeNode')\nconst insertTreeNode = require('./insertTreeNode')\nconst printTree = require('./printTree')\nconst walkTreeBFS = require('./walkTreeBFS')\nconst walkTreeDFS = require('./walkTreeDFS')\n\nmodule.exports = {\n  createTree,\n  createTreeNode,\n  deleteTreeNode,\n  findTreeNode,\n  insertTreeNode,\n  printTree,\n  walkTreeBFS,\n  walkTreeDFS\n}\n",
+    "static": true,
+    "longname": "src/ds/tree/index.js",
+    "access": null,
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 9,
+    "kind": "variable",
+    "name": "createTree",
+    "memberof": "src/ds/tree/index.js",
+    "static": true,
+    "longname": "src/ds/tree/index.js~createTree",
+    "access": null,
+    "export": false,
+    "importPath": "rigtools/src/ds/tree/index.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 1,
+    "undocument": true,
+    "unknown": [
+      {
+        "tagName": "@_undocument",
+        "tagValue": ""
+      }
+    ],
+    "type": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 10,
+    "kind": "variable",
+    "name": "createTreeNode",
+    "memberof": "src/ds/tree/index.js",
+    "static": true,
+    "longname": "src/ds/tree/index.js~createTreeNode",
+    "access": null,
+    "export": false,
+    "importPath": "rigtools/src/ds/tree/index.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 2,
+    "undocument": true,
+    "unknown": [
+      {
+        "tagName": "@_undocument",
+        "tagValue": ""
+      }
+    ],
+    "type": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 11,
+    "kind": "variable",
+    "name": "deleteTreeNode",
+    "memberof": "src/ds/tree/index.js",
+    "static": true,
+    "longname": "src/ds/tree/index.js~deleteTreeNode",
+    "access": null,
+    "export": false,
+    "importPath": "rigtools/src/ds/tree/index.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 3,
+    "undocument": true,
+    "unknown": [
+      {
+        "tagName": "@_undocument",
+        "tagValue": ""
+      }
+    ],
+    "type": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 12,
+    "kind": "variable",
+    "name": "findTreeNode",
+    "memberof": "src/ds/tree/index.js",
+    "static": true,
+    "longname": "src/ds/tree/index.js~findTreeNode",
+    "access": null,
+    "export": false,
+    "importPath": "rigtools/src/ds/tree/index.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 4,
+    "undocument": true,
+    "unknown": [
+      {
+        "tagName": "@_undocument",
+        "tagValue": ""
+      }
+    ],
+    "type": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 13,
+    "kind": "variable",
+    "name": "insertTreeNode",
+    "memberof": "src/ds/tree/index.js",
+    "static": true,
+    "longname": "src/ds/tree/index.js~insertTreeNode",
+    "access": null,
+    "export": false,
+    "importPath": "rigtools/src/ds/tree/index.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 5,
+    "undocument": true,
+    "unknown": [
+      {
+        "tagName": "@_undocument",
+        "tagValue": ""
+      }
+    ],
+    "type": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 14,
+    "kind": "variable",
+    "name": "printTree",
+    "memberof": "src/ds/tree/index.js",
+    "static": true,
+    "longname": "src/ds/tree/index.js~printTree",
+    "access": null,
+    "export": false,
+    "importPath": "rigtools/src/ds/tree/index.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 6,
+    "undocument": true,
+    "unknown": [
+      {
+        "tagName": "@_undocument",
+        "tagValue": ""
+      }
+    ],
+    "type": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 15,
+    "kind": "variable",
+    "name": "walkTreeBFS",
+    "memberof": "src/ds/tree/index.js",
+    "static": true,
+    "longname": "src/ds/tree/index.js~walkTreeBFS",
+    "access": null,
+    "export": false,
+    "importPath": "rigtools/src/ds/tree/index.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 7,
+    "undocument": true,
+    "unknown": [
+      {
+        "tagName": "@_undocument",
+        "tagValue": ""
+      }
+    ],
+    "type": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 16,
+    "kind": "variable",
+    "name": "walkTreeDFS",
+    "memberof": "src/ds/tree/index.js",
+    "static": true,
+    "longname": "src/ds/tree/index.js~walkTreeDFS",
+    "access": null,
+    "export": false,
+    "importPath": "rigtools/src/ds/tree/index.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 8,
+    "undocument": true,
+    "unknown": [
+      {
+        "tagName": "@_undocument",
+        "tagValue": ""
+      }
+    ],
+    "type": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 17,
+    "kind": "file",
+    "name": "src/ds/tree/insertTreeNode.js",
+    "content": "/**\n * inserts a tree node into a tree as a child of the specified parent using the specified offset\n *\n * the offset allows you to specify the position in the children list where the new node will be inserted\n * + a negative offset will insert the new node at the beginning of the children list\n * + a positive offset will insert the new node at the end of the children list\n * + an offset of zero is treated as a positive offset\n *\n * @version 1.0.0\n * @param {{parent:object, node:object, offset:number}} config - destructured initialization object\n * @param {{id:string, children:Array}} config.parent - the tree node which serves as the parent of the new node\n * @param {{id:string, children:Array}} config.node - the new node to insert\n * @param {number} [config.offset=0] - injection offset position\n *\n * @example <caption>How to use</caption>\n *\n * insertTreeNode({ parent, node, offset })\n */\nconst insertTreeNode = ({ parent, node, offset = 0 } = {}) => {\n  if (offset < 0) {\n    parent.children.unshift(node)\n  } else {\n    parent.children.push(node)\n  }\n}\n\nmodule.exports = insertTreeNode\n",
+    "static": true,
+    "longname": "src/ds/tree/insertTreeNode.js",
+    "access": null,
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 18,
+    "kind": "function",
+    "name": "insertTreeNode",
+    "memberof": "src/ds/tree/insertTreeNode.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/ds/tree/insertTreeNode.js~insertTreeNode",
+    "access": null,
+    "export": false,
+    "importPath": "rigtools/src/ds/tree/insertTreeNode.js",
+    "importStyle": null,
+    "description": "inserts a tree node into a tree as a child of the specified parent using the specified offset\n\nthe offset allows you to specify the position in the children list where the new node will be inserted\n+ a negative offset will insert the new node at the beginning of the children list\n+ a positive offset will insert the new node at the end of the children list\n+ an offset of zero is treated as a positive offset",
+    "examples": [
+      "<caption>How to use</caption>\n\ninsertTreeNode({ parent, node, offset })"
+    ],
+    "lineNumber": 19,
+    "version": "1.0.0",
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "{parent:object, node:object, offset:number}"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "config",
+        "description": "destructured initialization object"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "{id:string, children:Array}"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "config.parent",
+        "description": "the tree node which serves as the parent of the new node"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "{id:string, children:Array}"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "config.node",
+        "description": "the new node to insert"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "number"
+        ],
+        "spread": false,
+        "optional": true,
+        "defaultValue": "0",
+        "defaultRaw": 0,
+        "name": "config.offset",
+        "description": "injection offset position"
+      }
+    ]
+  },
+  {
+    "__docId__": 19,
+    "kind": "file",
+    "name": "src/ds/tree/printTree.js",
+    "content": "/**\n * prints the tree to the console\n *\n * @version 1.0.0\n * @param {{tree:object, showData:boolean,showChildCount:boolean,linear:boolean}}} config - destructured initialization object\n * @param {{id:string, children:Array}} config.tree - the tree root to start printing\n *\n * @example <caption>How to use</caption>\n *\n * // print the tree in a linear fashion where each depth is on a new line\n * printTree({ tree, linear: true })\n *\n * // print the tree in an expanded hierarchial display showing branches of the tree\n * printTree({ tree, linear: false })\n *\n * // print the tree in an expanded hierarchial display showing branches of the tree\n * // and display the number of children each node contains\n * printTree({ tree, showChildCount: true })\n *\n * // print the tree in an expanded hierarchial display showing branches of the tree\n * // and display the data of each node using JSON.stringify\n * printTree({ tree, showData: true })\n *\n * @see https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify\n */\nconst printTree = ({ tree, showData = false, showChildCount = false, linear = false } = {}) => {\n  if (linear) {\n    const terminal = { data: '\\n', children: [] }\n    const queue = [tree, terminal]\n    const display = []\n\n    while (queue.length) {\n      const node = queue.shift()\n\n      if (node) {\n        const data = showData ? `data=${JSON.stringify(node.data)}` : ''\n        const kids = showChildCount ? `(${node.children.length})` : ''\n\n        display.push(`[${node.id}] ${data}${kids}`)\n\n        if (node === terminal && queue.length) {\n          queue.push(terminal)\n        }\n\n        for (let i = 0; i < node.children.length; i += 1) {\n          queue.push(node.children[i])\n        }\n      }\n    }\n\n    console.log(display.join('').slice(0, -2).trim())\n  } else {\n    const stack = [tree]\n    const list = [stack]\n    const display = []\n\n    while (list.length) {\n      const stack = list[list.length - 1]\n\n      if (!stack.length) {\n        list.pop()\n      } else {\n        const node = stack.shift()\n\n        if (node) {\n          const inset = []\n\n          for (let i = 0; i < list.length - 1; i += 1) {\n            inset.push(list[i].length > 0 ? '|  ' : '   ')\n          }\n\n          const data = showData ? `\\n${inset.join('')}  data=${JSON.stringify(node.data)}` : ''\n          const kids = showChildCount ? `(${node.children.length})` : ''\n\n          display.push(`${inset.join('')}+- [${node.id}]${kids}${data}\\n`)\n\n          if (node.children.length) {\n            list.push([...node.children])\n          }\n        }\n      }\n    }\n\n    console.log(display.join('').trim())\n  }\n}\n\nmodule.exports = printTree\n",
+    "static": true,
+    "longname": "src/ds/tree/printTree.js",
+    "access": null,
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 20,
+    "kind": "function",
+    "name": "printTree",
+    "memberof": "src/ds/tree/printTree.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/ds/tree/printTree.js~printTree",
+    "access": null,
+    "export": false,
+    "importPath": "rigtools/src/ds/tree/printTree.js",
+    "importStyle": null,
+    "description": "prints the tree to the console",
+    "examples": [
+      "<caption>How to use</caption>\n\n// print the tree in a linear fashion where each depth is on a new line\nprintTree({ tree, linear: true })\n\n// print the tree in an expanded hierarchial display showing branches of the tree\nprintTree({ tree, linear: false })\n\n// print the tree in an expanded hierarchial display showing branches of the tree\n// and display the number of children each node contains\nprintTree({ tree, showChildCount: true })\n\n// print the tree in an expanded hierarchial display showing branches of the tree\n// and display the data of each node using JSON.stringify\nprintTree({ tree, showData: true })"
+    ],
+    "see": [
+      "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify"
+    ],
+    "lineNumber": 26,
+    "version": "1.0.0",
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "{tree:object, showData:boolean,showChildCount:boolean,linear:boolean}}"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "config",
+        "description": "destructured initialization object"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "{id:string, children:Array}"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "config.tree",
+        "description": "the tree root to start printing"
+      }
+    ]
+  },
+  {
+    "__docId__": 21,
+    "kind": "file",
+    "name": "src/ds/tree/walkTreeBFS.js",
+    "content": "/**\n * walk through the tree using a breadth-first search (BFS) and call visitor function for each tree node\n *\n * @version 1.0.0\n * @param {{tree:object, visitor:function(node:{id:string, children:Array})}} config - destructured initialization object\n * @param {{id:string, children:Array}} config.tree - the tree to walk\n * @param {function(node:{id:string, children:Array})} config.visitor - function to call for each tree node in the tree\n *\n * @example <caption>How to use</caption>\n *\n * walkTreeBFS({ tree, visitor (node) { console.log('visiting node', node.id) } })\n *\n * @see https://en.wikipedia.org/wiki/Breadth-first_search\n */\nconst walkTreeBFS = ({ tree, visitor }) => {\n  const queue = [tree]\n\n  while (queue.length) {\n    const node = queue.shift()\n\n    if (node) {\n      visitor && visitor(node, tree)\n\n      for (let i = 0; i < node.children.length; i += 1) {\n        queue.push(node.children[i])\n      }\n    }\n  }\n}\n\nmodule.exports = walkTreeBFS\n",
+    "static": true,
+    "longname": "src/ds/tree/walkTreeBFS.js",
+    "access": null,
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 22,
+    "kind": "function",
+    "name": "walkTreeBFS",
+    "memberof": "src/ds/tree/walkTreeBFS.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/ds/tree/walkTreeBFS.js~walkTreeBFS",
+    "access": null,
+    "export": false,
+    "importPath": "rigtools/src/ds/tree/walkTreeBFS.js",
+    "importStyle": null,
+    "description": "walk through the tree using a breadth-first search (BFS) and call visitor function for each tree node",
+    "examples": [
+      "<caption>How to use</caption>\n\nwalkTreeBFS({ tree, visitor (node) { console.log('visiting node', node.id) } })"
+    ],
+    "see": [
+      "https://en.wikipedia.org/wiki/Breadth-first_search"
+    ],
+    "lineNumber": 15,
+    "version": "1.0.0",
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "{tree:object, visitor:function(node:{id:string, children:Array})}"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "config",
+        "description": "destructured initialization object"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "{id:string, children:Array}"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "config.tree",
+        "description": "the tree to walk"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "function(node:{id:string, children:Array})"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "config.visitor",
+        "description": "function to call for each tree node in the tree"
+      }
+    ]
+  },
+  {
+    "__docId__": 23,
+    "kind": "file",
+    "name": "src/ds/tree/walkTreeDFS.js",
+    "content": "/**\n * walk through the tree using a depth-first search (DFS) and call visitor function for each tree node\n *\n * @version 1.0.0\n * @param {{tree:object, visitor:function(node:{id:string, children:Array})}} config - destructured initialization object\n * @param {{id:string, children:Array}} config.tree - the tree to walk\n * @param {function(node:{id:string, children:Array})} config.visitor - function to call for each tree node in the tree\n *\n * @example <caption>How to use</caption>\n *\n * walkTreeDFS({ tree, visitor (node) { console.log('visiting node', node.id) } })\n *\n * @see https://en.wikipedia.org/wiki/Depth-first_search\n */\nconst walkTreeDFS = ({ tree, visitor, order = 'post' }) => {\n  const stack = [tree]\n\n  if (order === 'post') {\n    while (stack.length) {\n      const node = stack.shift()\n\n      if (node) {\n        for (let i = 0; i < node.children.length; i += 1) {\n          stack.unshift(node.children[i])\n        }\n\n        visitor && visitor(node, tree)\n      }\n    }\n  } else if (order === 'pre') {\n    while (stack.length) {\n      const node = stack.shift()\n\n      if (node) {\n        visitor && visitor(node, tree)\n\n        for (let i = 0; i < node.children.length; i += 1) {\n          stack.unshift(node.children[i])\n        }\n      }\n    }\n  }\n}\n\nmodule.exports = walkTreeDFS\n",
+    "static": true,
+    "longname": "src/ds/tree/walkTreeDFS.js",
+    "access": null,
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 24,
+    "kind": "function",
+    "name": "walkTreeDFS",
+    "memberof": "src/ds/tree/walkTreeDFS.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/ds/tree/walkTreeDFS.js~walkTreeDFS",
+    "access": null,
+    "export": false,
+    "importPath": "rigtools/src/ds/tree/walkTreeDFS.js",
+    "importStyle": null,
+    "description": "walk through the tree using a depth-first search (DFS) and call visitor function for each tree node",
+    "examples": [
+      "<caption>How to use</caption>\n\nwalkTreeDFS({ tree, visitor (node) { console.log('visiting node', node.id) } })"
+    ],
+    "see": [
+      "https://en.wikipedia.org/wiki/Depth-first_search"
+    ],
+    "lineNumber": 15,
+    "version": "1.0.0",
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "{tree:object, visitor:function(node:{id:string, children:Array})}"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "config",
+        "description": "destructured initialization object"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "{id:string, children:Array}"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "config.tree",
+        "description": "the tree to walk"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "function(node:{id:string, children:Array})"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "config.visitor",
+        "description": "function to call for each tree node in the tree"
+      }
+    ]
+  },
+  {
+    "__docId__": 25,
+    "kind": "file",
+    "name": "src/examples/tree-example.js",
+    "content": "const treeApi = require('../ds/tree')\n\n// create a tree root node\nconst tree = treeApi.createTree({ id: 'my-tree' })\n\n// insert a child node into the tree as a child of the root node\n// offset here is optional and used for demonstration purposes. zero is the default offset\ntreeApi.insertTreeNode({\n  parent: tree,\n  offset: 0,\n  node: treeApi.createTreeNode({\n    id: 'child',\n    data: {\n      name: 'Child Node'\n    }\n  })\n})\n\n// insert a child node into the tree as a child of the root node\n// negative offset causes the node to be inserted at the beginning of the parent children list\n// a positive offset would cause the node to be inserted at the end of the parent children list\ntreeApi.insertTreeNode({\n  parent: tree,\n  offset: -1,\n  node: treeApi.createTreeNode({\n    id: 'sibling',\n    data: {\n      name: 'Sibling Node'\n    }\n  })\n})\n\ntreeApi.insertTreeNode({\n  parent: treeApi.findTreeNode({ tree, id: 'child' }),\n  node: treeApi.createTreeNode({\n    id: 'grandchild',\n    data: {\n      name: 'Grandchild Node'\n    }\n  })\n})\n\ntreeApi.insertTreeNode({\n  parent: treeApi.findTreeNode({ tree, id: 'grandchild' }),\n  node: treeApi.createTreeNode({\n    id: 'great-grandchild',\n    data: {\n      name: 'Great Grandchild Node'\n    }\n  })\n})\n\n// walk through the tree using a breadth-first-search and call visitor function for each tree node\ntreeApi.walkTreeBFS({\n  tree,\n  visitor (node) {\n    console.log(`The current node ${node.id} data name is ${node.data.name}`)\n  }\n})\n\n// delete the sibling node and all children of the sibling from the tree\ntreeApi.deleteTreeNode({ tree, id: 'sibling' })\n\n// walk through the tree using a depth-first-search and call visitor function for each tree node\ntreeApi.walkTreeDFS({\n  tree,\n  visitor (node) {\n    console.log(`The current node ${node.id} data name is ${node.data.name}`)\n  }\n})\n\n// print the tree in a linear fashion where each depth is on a new line\ntreeApi.printTree({ tree, linear: true })\n\n// print the tree in an expanded hierarchial display showing branches of the tree\ntreeApi.printTree({ tree, linear: false })\n",
+    "static": true,
+    "longname": "src/examples/tree-example.js",
+    "access": null,
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 26,
+    "kind": "variable",
+    "name": "treeApi",
+    "memberof": "src/examples/tree-example.js",
+    "static": true,
+    "longname": "src/examples/tree-example.js~treeApi",
+    "access": null,
+    "export": false,
+    "importPath": "rigtools/src/examples/tree-example.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 1,
+    "undocument": true,
+    "unknown": [
+      {
+        "tagName": "@_undocument",
+        "tagValue": ""
+      }
+    ],
+    "type": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 27,
+    "kind": "variable",
+    "name": "tree",
+    "memberof": "src/examples/tree-example.js",
+    "static": true,
+    "longname": "src/examples/tree-example.js~tree",
+    "access": null,
+    "export": false,
+    "importPath": "rigtools/src/examples/tree-example.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 4,
+    "undocument": true,
+    "unknown": [
+      {
+        "tagName": "@_undocument",
+        "tagValue": ""
+      }
+    ],
+    "type": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 28,
+    "kind": "file",
+    "name": "src/index.js",
+    "content": "const tree = require('./ds/tree')\n\nmodule.exports = {\n  ds: {\n    tree\n  }\n}\n",
+    "static": true,
+    "longname": "src/index.js",
+    "access": null,
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 29,
+    "kind": "variable",
+    "name": "tree",
+    "memberof": "src/index.js",
+    "static": true,
+    "longname": "src/index.js~tree",
+    "access": null,
+    "export": false,
+    "importPath": "rigtools/src/index.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 1,
+    "undocument": true,
+    "unknown": [
+      {
+        "tagName": "@_undocument",
+        "tagValue": ""
+      }
+    ],
+    "type": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 31,
+    "kind": "external",
+    "name": "Infinity",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Infinity",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Infinity",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 32,
+    "kind": "external",
+    "name": "NaN",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/NaN",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~NaN",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 33,
+    "kind": "external",
+    "name": "undefined",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/undefined",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~undefined",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 34,
+    "kind": "external",
+    "name": "null",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/null",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~null",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 35,
+    "kind": "external",
+    "name": "Object",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Object",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 36,
+    "kind": "external",
+    "name": "object",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~object",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 37,
+    "kind": "external",
+    "name": "Function",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Function",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 38,
+    "kind": "external",
+    "name": "function",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~function",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 39,
+    "kind": "external",
+    "name": "Boolean",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Boolean",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 40,
+    "kind": "external",
+    "name": "boolean",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~boolean",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 41,
+    "kind": "external",
+    "name": "Symbol",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Symbol",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Symbol",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 42,
+    "kind": "external",
+    "name": "Error",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Error",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 43,
+    "kind": "external",
+    "name": "EvalError",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/EvalError",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~EvalError",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 44,
+    "kind": "external",
+    "name": "InternalError",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/InternalError",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~InternalError",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 45,
+    "kind": "external",
+    "name": "RangeError",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RangeError",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~RangeError",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 46,
+    "kind": "external",
+    "name": "ReferenceError",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ReferenceError",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~ReferenceError",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 47,
+    "kind": "external",
+    "name": "SyntaxError",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/SyntaxError",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~SyntaxError",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 48,
+    "kind": "external",
+    "name": "TypeError",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/TypeError",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~TypeError",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 49,
+    "kind": "external",
+    "name": "URIError",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/URIError",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~URIError",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 50,
+    "kind": "external",
+    "name": "Number",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Number",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 51,
+    "kind": "external",
+    "name": "number",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~number",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 52,
+    "kind": "external",
+    "name": "Date",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Date",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 53,
+    "kind": "external",
+    "name": "String",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~String",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 54,
+    "kind": "external",
+    "name": "string",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~string",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 55,
+    "kind": "external",
+    "name": "RegExp",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~RegExp",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 56,
+    "kind": "external",
+    "name": "Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Array",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 57,
+    "kind": "external",
+    "name": "Int8Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Int8Array",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Int8Array",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 58,
+    "kind": "external",
+    "name": "Uint8Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint8Array",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Uint8Array",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 59,
+    "kind": "external",
+    "name": "Uint8ClampedArray",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint8ClampedArray",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Uint8ClampedArray",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 60,
+    "kind": "external",
+    "name": "Int16Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Int16Array",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Int16Array",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 61,
+    "kind": "external",
+    "name": "Uint16Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint16Array",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Uint16Array",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 62,
+    "kind": "external",
+    "name": "Int32Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Int32Array",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Int32Array",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 63,
+    "kind": "external",
+    "name": "Uint32Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint32Array",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Uint32Array",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 64,
+    "kind": "external",
+    "name": "Float32Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Float32Array",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Float32Array",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 65,
+    "kind": "external",
+    "name": "Float64Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Float64Array",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Float64Array",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 66,
+    "kind": "external",
+    "name": "Map",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Map",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 67,
+    "kind": "external",
+    "name": "Set",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Set",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 68,
+    "kind": "external",
+    "name": "WeakMap",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/WeakMap",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~WeakMap",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 69,
+    "kind": "external",
+    "name": "WeakSet",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/WeakSet",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~WeakSet",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 70,
+    "kind": "external",
+    "name": "ArrayBuffer",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~ArrayBuffer",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 71,
+    "kind": "external",
+    "name": "DataView",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/DataView",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~DataView",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 72,
+    "kind": "external",
+    "name": "JSON",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~JSON",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 73,
+    "kind": "external",
+    "name": "Promise",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Promise",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 74,
+    "kind": "external",
+    "name": "Generator",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Generator",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Generator",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 75,
+    "kind": "external",
+    "name": "GeneratorFunction",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/GeneratorFunction",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~GeneratorFunction",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 76,
+    "kind": "external",
+    "name": "Reflect",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Reflect",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Reflect",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 77,
+    "kind": "external",
+    "name": "Proxy",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Proxy",
+    "access": null,
+    "description": "",
+    "lineNumber": 193,
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 79,
+    "kind": "external",
+    "name": "CanvasRenderingContext2D",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D",
+    "memberof": "BuiltinExternal/WebAPIExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/WebAPIExternal.js~CanvasRenderingContext2D",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 80,
+    "kind": "external",
+    "name": "DocumentFragment",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/API/DocumentFragment",
+    "memberof": "BuiltinExternal/WebAPIExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/WebAPIExternal.js~DocumentFragment",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 81,
+    "kind": "external",
+    "name": "Element",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/API/Element",
+    "memberof": "BuiltinExternal/WebAPIExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/WebAPIExternal.js~Element",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 82,
+    "kind": "external",
+    "name": "Event",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/API/Event",
+    "memberof": "BuiltinExternal/WebAPIExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/WebAPIExternal.js~Event",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 83,
+    "kind": "external",
+    "name": "Node",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/API/Node",
+    "memberof": "BuiltinExternal/WebAPIExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/WebAPIExternal.js~Node",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 84,
+    "kind": "external",
+    "name": "NodeList",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/API/NodeList",
+    "memberof": "BuiltinExternal/WebAPIExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/WebAPIExternal.js~NodeList",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 85,
+    "kind": "external",
+    "name": "XMLHttpRequest",
+    "externalLink": "https://developer.mozilla.org/en/docs/Web/API/XMLHttpRequest",
+    "memberof": "BuiltinExternal/WebAPIExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/WebAPIExternal.js~XMLHttpRequest",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 86,
+    "kind": "external",
+    "name": "AudioContext",
+    "externalLink": "https://developer.mozilla.org/en/docs/Web/API/AudioContext",
+    "memberof": "BuiltinExternal/WebAPIExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/WebAPIExternal.js~AudioContext",
+    "access": null,
+    "description": "",
+    "lineNumber": 34,
+    "builtinExternal": true
+  }
+]
