@@ -1,0 +1,40 @@
+{
+  "name": "rigtools",
+  "version": "1.0.0",
+  "description": "Rambling Indie Games Development Tools",
+  "main": "build/rigtools.js",
+  "dependencies": {},
+  "devDependencies": {
+    "esdoc": "^0.5.2",
+    "webpack": "^3.0.0"
+  },
+  "scripts": {
+    "build": "webpack --colors",
+    "docs": "esdoc",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RichardMarks/rigtools.git"
+  },
+  "keywords": [
+    "javascript",
+    "rig",
+    "indie",
+    "game",
+    "development",
+    "games",
+    "rigtools",
+    "data",
+    "structures",
+    "rambling",
+    "indie",
+    "games"
+  ],
+  "author": "Richard Marks <ccpsceo@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/RichardMarks/rigtools/issues"
+  },
+  "homepage": "https://github.com/RichardMarks/rigtools#readme"
+}

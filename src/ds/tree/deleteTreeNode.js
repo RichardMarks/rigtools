@@ -9,7 +9,7 @@
  *
  * @example <caption>How to use</caption>
  *
- * const node = deleteTreeNode({ tree, id: 'target-tree-node' })
+ * deleteTreeNode({ tree, id: 'target-tree-node' })
  */
 const deleteTreeNode = ({ tree, id } = {}) => {
   if (tree.id === id) {

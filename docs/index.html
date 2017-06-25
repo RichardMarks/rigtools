@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <base data-ice="baseUrl">
+  <title data-ice="title">rigtools API Document</title>
+  <link type="text/css" rel="stylesheet" href="css/style.css">
+  <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
+  <script src="script/prettify/prettify.js"></script>
+  
+  
+  <script src="script/manual.js"></script>
+</head>
+<body class="layout-container" data-ice="rootContainer">
+
+<header>
+  <a href="./">Home</a>
+  
+  <a href="identifiers.html">Reference</a>
+  <a href="source.html">Source</a>
+  
+  <a data-ice="repoURL" href="https://github.com/RichardMarks/rigtools" class="repo-url-github">Repository</a>
+  <div class="search-box">
+  <span>
+    <img src="./image/search.png">
+    <span class="search-input-edge"></span><input class="search-input"><span class="search-input-edge"></span>
+  </span>
+    <ul class="search-result"></ul>
+  </div>
+</header>
+
+<nav class="navigation" data-ice="nav"><div>
+  <ul>
+    
+  <li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">ds/tree</div><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-createTree">createTree</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-createTreeNode">createTreeNode</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-deleteTreeNode">deleteTreeNode</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-findTreeNode">findTreeNode</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-insertTreeNode">insertTreeNode</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-printTree">printTree</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-walkTreeBFS">walkTreeBFS</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-walkTreeDFS">walkTreeDFS</a></span></span></li>
+</ul>
+</div>
+</nav>
+
+<div class="content" data-ice="content"><div data-ice="index" class="github-markdown"><h1 id="rigtools">rigtools</h1>
+<p>Rambling Indie Games Development Tools</p>
+<h2 id="what-is-rigtools-">What is rigtools?</h2>
+<p>rigtools is a small and powerful JavaScript library for rapid game development</p>
+<h2 id="what-is-included-in-rigtools-">What is included in rigtools?</h2>
+<ul>
+<li>Data Structures</li>
+<li><ul>
+<li>Tree - A set of functions for working with hierarchial data in plain data objects suitable for use in state</li>
+</ul>
+</li>
+</ul>
+<h2 id="sounds-great-how-do-i-get-rigtools-">Sounds Great! How do I get rigtools?</h2>
+<p>First install the tools into your project using npm (TODO: write build process and publish to npm)</p>
+<p><strong> For now, you need to git clone the repo and copy the contents of <code>src</code> into a directory called <code>rigtools</code> in your project </strong></p>
+<pre><code><code class="source-code prettyprint">npm install rigtools</code>
+</code></pre><p>Or, if you are not using npm, you can clone this repository with git</p>
+<pre><code><code class="source-code prettyprint">git clone https://github.com/RichardMarks/rigtools.git</code>
+</code></pre><h2 id="okay-how-do-i-use-rigtools-">Okay, how do I use rigtools?</h2>
+<p>You can import everything,</p>
+<pre><code class="lang-js"><code class="source-code prettyprint">import rigtools from &apos;rigtools&apos;
+
+const tree = rigtools.ds.tree.createTree({ id: &apos;my-tree&apos; })</code>
+</code></pre>
+<p>or you can just import what you need.</p>
+<pre><code class="lang-js"><code class="source-code prettyprint">import { createTree } from &apos;rigtools/ds/tree&apos;
+
+const tree = createTree({ id: &apos;my-tree&apos; })</code>
+</code></pre>
+<h2 id="is-there-documentation-for-rigtools-">Is there documentation for rigtools?</h2>
+<p>Of course!</p>
+<p>Such a great library would not be complete without documentation!</p>
+<p>You can read the latest documentation online [TODO: put docs online]</p>
+<p>Or you can generate them yourself and read them on your machine.</p>
+<pre><code><code class="source-code prettyprint">npm run docs</code>
+</code></pre><p>The documentation will be generated in the <code>docs</code> directory.</p>
+<h2 id="are-there-any-rigtools-examples-how-do-i-do-x-with-rigtools-">Are there any rigtools examples? How do I do X with rigtools?</h2>
+<p>The documentation is full of examples for every function in the library.</p>
+<p>If you need to figure out how to use the library for a particular case,
+check out the issues on github, and search for what you are looking to do.
+It&apos;s possible another user has already asked and gotten an answer!</p>
+<p>If you don&apos;t see what you are looking for, feel free to <a href="https://github.com/RichardMarks/rigtools/issues/new">create an issue on github</a> and label it <code>help wanted</code></p>
+<h2 id="can-i-use-rigtools-commercially-">Can I use rigtools commercially?</h2>
+<p>Yes, you can! There are some rules though. See license information below.</p>
+<h2 id="what-is-the-rigtools-license-">What is the rigtools License?</h2>
+<p>See the LICENSE.md file in the repository, or just read it below.</p>
+<blockquote>
+<p>MIT License</p>
+<p>Copyright (c) 2017 Richard Marks, Rambling Indie Games LLC</p>
+<p>Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the &quot;Software&quot;), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:</p>
+<p>The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.</p>
+<p>THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.</p>
+</blockquote>
+</div>
+</div>
+
+<footer class="footer">
+  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(0.5.2)</span><img src="./image/esdoc-logo-mini-black.png"></a>
+</footer>
+
+<script src="script/search_index.js"></script>
+<script src="script/search.js"></script>
+<script src="script/pretty-print.js"></script>
+<script src="script/inherited-summary.js"></script>
+<script src="script/test-summary.js"></script>
+<script src="script/inner-link.js"></script>
+<script src="script/patch-for-local.js"></script>
+</body>
+</html>

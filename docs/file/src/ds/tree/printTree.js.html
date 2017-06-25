@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <base data-ice="baseUrl" href="../../../../">
+  <title data-ice="title">src/ds/tree/printTree.js | rigtools API Document</title>
+  <link type="text/css" rel="stylesheet" href="css/style.css">
+  <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
+  <script src="script/prettify/prettify.js"></script>
+  
+  
+  <script src="script/manual.js"></script>
+</head>
+<body class="layout-container" data-ice="rootContainer">
+
+<header>
+  <a href="./">Home</a>
+  
+  <a href="identifiers.html">Reference</a>
+  <a href="source.html">Source</a>
+  
+  <a data-ice="repoURL" href="https://github.com/RichardMarks/rigtools" class="repo-url-github">Repository</a>
+  <div class="search-box">
+  <span>
+    <img src="./image/search.png">
+    <span class="search-input-edge"></span><input class="search-input"><span class="search-input-edge"></span>
+  </span>
+    <ul class="search-result"></ul>
+  </div>
+</header>
+
+<nav class="navigation" data-ice="nav"><div>
+  <ul>
+    
+  <li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">ds/tree</div><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-createTree">createTree</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-createTreeNode">createTreeNode</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-deleteTreeNode">deleteTreeNode</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-findTreeNode">findTreeNode</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-insertTreeNode">insertTreeNode</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-printTree">printTree</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-walkTreeBFS">walkTreeBFS</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-walkTreeDFS">walkTreeDFS</a></span></span></li>
+</ul>
+</div>
+</nav>
+
+<div class="content" data-ice="content"><h1 data-ice="title">src/ds/tree/printTree.js</h1>
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">/**
+ * prints the tree to the console
+ *
+ * @version 1.0.0
+ * @param {{tree:object, showData:boolean,showChildCount:boolean,linear:boolean}}} config - destructured initialization object
+ * @param {{id:string, children:Array}} config.tree - the tree root to start printing
+ *
+ * @example &lt;caption&gt;How to use&lt;/caption&gt;
+ *
+ * // print the tree in a linear fashion where each depth is on a new line
+ * printTree({ tree, linear: true })
+ *
+ * // print the tree in an expanded hierarchial display showing branches of the tree
+ * printTree({ tree, linear: false })
+ *
+ * // print the tree in an expanded hierarchial display showing branches of the tree
+ * // and display the number of children each node contains
+ * printTree({ tree, showChildCount: true })
+ *
+ * // print the tree in an expanded hierarchial display showing branches of the tree
+ * // and display the data of each node using JSON.stringify
+ * printTree({ tree, showData: true })
+ *
+ * @see https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify
+ */
+const printTree = ({ tree, showData = false, showChildCount = false, linear = false } = {}) =&gt; {
+  if (linear) {
+    const terminal = { data: &apos;\n&apos;, children: [] }
+    const queue = [tree, terminal]
+    const display = []
+
+    while (queue.length) {
+      const node = queue.shift()
+
+      if (node) {
+        const data = showData ? `data=${JSON.stringify(node.data)}` : &apos;&apos;
+        const kids = showChildCount ? `(${node.children.length})` : &apos;&apos;
+
+        display.push(`[${node.id}] ${data}${kids}`)
+
+        if (node === terminal &amp;&amp; queue.length) {
+          queue.push(terminal)
+        }
+
+        for (let i = 0; i &lt; node.children.length; i += 1) {
+          queue.push(node.children[i])
+        }
+      }
+    }
+
+    console.log(display.join(&apos;&apos;).slice(0, -2).trim())
+  } else {
+    const stack = [tree]
+    const list = [stack]
+    const display = []
+
+    while (list.length) {
+      const stack = list[list.length - 1]
+
+      if (!stack.length) {
+        list.pop()
+      } else {
+        const node = stack.shift()
+
+        if (node) {
+          const inset = []
+
+          for (let i = 0; i &lt; list.length - 1; i += 1) {
+            inset.push(list[i].length &gt; 0 ? &apos;|  &apos; : &apos;   &apos;)
+          }
+
+          const data = showData ? `\n${inset.join(&apos;&apos;)}  data=${JSON.stringify(node.data)}` : &apos;&apos;
+          const kids = showChildCount ? `(${node.children.length})` : &apos;&apos;
+
+          display.push(`${inset.join(&apos;&apos;)}+- [${node.id}]${kids}${data}\n`)
+
+          if (node.children.length) {
+            list.push([...node.children])
+          }
+        }
+      }
+    }
+
+    console.log(display.join(&apos;&apos;).trim())
+  }
+}
+
+module.exports = printTree
+</code></pre>
+
+</div>
+
+<footer class="footer">
+  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(0.5.2)</span><img src="./image/esdoc-logo-mini-black.png"></a>
+</footer>
+
+<script src="script/search_index.js"></script>
+<script src="script/search.js"></script>
+<script src="script/pretty-print.js"></script>
+<script src="script/inherited-summary.js"></script>
+<script src="script/test-summary.js"></script>
+<script src="script/inner-link.js"></script>
+<script src="script/patch-for-local.js"></script>
+</body>
+</html>

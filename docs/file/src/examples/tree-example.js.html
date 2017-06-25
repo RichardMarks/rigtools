@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <base data-ice="baseUrl" href="../../../">
+  <title data-ice="title">src/examples/tree-example.js | rigtools API Document</title>
+  <link type="text/css" rel="stylesheet" href="css/style.css">
+  <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
+  <script src="script/prettify/prettify.js"></script>
+  
+  
+  <script src="script/manual.js"></script>
+</head>
+<body class="layout-container" data-ice="rootContainer">
+
+<header>
+  <a href="./">Home</a>
+  
+  <a href="identifiers.html">Reference</a>
+  <a href="source.html">Source</a>
+  
+  <a data-ice="repoURL" href="https://github.com/RichardMarks/rigtools" class="repo-url-github">Repository</a>
+  <div class="search-box">
+  <span>
+    <img src="./image/search.png">
+    <span class="search-input-edge"></span><input class="search-input"><span class="search-input-edge"></span>
+  </span>
+    <ul class="search-result"></ul>
+  </div>
+</header>
+
+<nav class="navigation" data-ice="nav"><div>
+  <ul>
+    
+  <li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">ds/tree</div><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-createTree">createTree</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-createTreeNode">createTreeNode</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-deleteTreeNode">deleteTreeNode</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-findTreeNode">findTreeNode</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-insertTreeNode">insertTreeNode</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-printTree">printTree</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-walkTreeBFS">walkTreeBFS</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-walkTreeDFS">walkTreeDFS</a></span></span></li>
+</ul>
+</div>
+</nav>
+
+<div class="content" data-ice="content"><h1 data-ice="title">src/examples/tree-example.js</h1>
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">const treeApi = require(&apos;../ds/tree&apos;)
+
+// create a tree root node
+const tree = treeApi.createTree({ id: &apos;my-tree&apos; })
+
+// insert a child node into the tree as a child of the root node
+// offset here is optional and used for demonstration purposes. zero is the default offset
+treeApi.insertTreeNode({
+  parent: tree,
+  offset: 0,
+  node: treeApi.createTreeNode({
+    id: &apos;child&apos;,
+    data: {
+      name: &apos;Child Node&apos;
+    }
+  })
+})
+
+// insert a child node into the tree as a child of the root node
+// negative offset causes the node to be inserted at the beginning of the parent children list
+// a positive offset would cause the node to be inserted at the end of the parent children list
+treeApi.insertTreeNode({
+  parent: tree,
+  offset: -1,
+  node: treeApi.createTreeNode({
+    id: &apos;sibling&apos;,
+    data: {
+      name: &apos;Sibling Node&apos;
+    }
+  })
+})
+
+treeApi.insertTreeNode({
+  parent: treeApi.findTreeNode({ tree, id: &apos;child&apos; }),
+  node: treeApi.createTreeNode({
+    id: &apos;grandchild&apos;,
+    data: {
+      name: &apos;Grandchild Node&apos;
+    }
+  })
+})
+
+treeApi.insertTreeNode({
+  parent: treeApi.findTreeNode({ tree, id: &apos;grandchild&apos; }),
+  node: treeApi.createTreeNode({
+    id: &apos;great-grandchild&apos;,
+    data: {
+      name: &apos;Great Grandchild Node&apos;
+    }
+  })
+})
+
+// walk through the tree using a breadth-first-search and call visitor function for each tree node
+treeApi.walkTreeBFS({
+  tree,
+  visitor (node) {
+    console.log(`The current node ${node.id} data name is ${node.data.name}`)
+  }
+})
+
+// delete the sibling node and all children of the sibling from the tree
+treeApi.deleteTreeNode({ tree, id: &apos;sibling&apos; })
+
+// walk through the tree using a depth-first-search and call visitor function for each tree node
+treeApi.walkTreeDFS({
+  tree,
+  visitor (node) {
+    console.log(`The current node ${node.id} data name is ${node.data.name}`)
+  }
+})
+
+// print the tree in a linear fashion where each depth is on a new line
+treeApi.printTree({ tree, linear: true })
+
+// print the tree in an expanded hierarchial display showing branches of the tree
+treeApi.printTree({ tree, linear: false })
+</code></pre>
+
+</div>
+
+<footer class="footer">
+  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(0.5.2)</span><img src="./image/esdoc-logo-mini-black.png"></a>
+</footer>
+
+<script src="script/search_index.js"></script>
+<script src="script/search.js"></script>
+<script src="script/pretty-print.js"></script>
+<script src="script/inherited-summary.js"></script>
+<script src="script/test-summary.js"></script>
+<script src="script/inner-link.js"></script>
+<script src="script/patch-for-local.js"></script>
+</body>
+</html>

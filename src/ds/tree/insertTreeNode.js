@@ -14,7 +14,7 @@
  *
  * @example <caption>How to use</caption>
  *
- * const node = insertTreeNode({ parent, node, offset })
+ * insertTreeNode({ parent, node, offset })
  */
 const insertTreeNode = ({ parent, node, offset = 0 } = {}) => {
   if (offset < 0) {
