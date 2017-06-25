@@ -1,0 +1,9 @@
+{
+  "title": "rigtools",
+  "source": "./src",
+  "destination": "./docs",
+  "index": "./README.md",
+  "package": "./package.json",
+  "unexportIdentifier": true,
+  "undocumentIdentifier": false
+}

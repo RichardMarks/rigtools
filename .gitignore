@@ -1,4 +1,5 @@
 /node_modules
 /build
+/docs
 .DS_Store
 npm-debug.log*

@@ -2,10 +2,15 @@
   "name": "rigtools",
   "version": "1.0.0",
   "description": "Rambling Indie Games Development Tools",
-  "main": "dist/rigtools.js",
+  "main": "build/rigtools.js",
   "dependencies": {},
-  "devDependencies": {},
+  "devDependencies": {
+    "esdoc": "^0.5.2",
+    "webpack": "^3.0.0"
+  },
   "scripts": {
+    "build": "webpack --colors",
+    "docs": "esdoc",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -13,8 +18,6 @@
     "url": "git+https://github.com/RichardMarks/rigtools.git"
   },
   "keywords": [
-    "es6",
-    "html5",
     "javascript",
     "rig",
     "indie",
