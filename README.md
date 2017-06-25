@@ -45,7 +45,7 @@ Of course!
 
 Such a great library would not be complete without documentation!
 
-You can read the latest documentation online [TODO: put docs online]
+You can [read the latest documentation online](https://richardmarks.github.io/rigtools/)
 
 Or you can generate them yourself and read them on your machine.
 
